@@ -31,11 +31,27 @@ class AuthenticationController extends Controller
         $user->Birth = $request->Birth;
         $res = $user->save();
 
+        
+if ($request->hasFile('image')) {
+    $image = $request->file('image');
+    $imageName = $image->getClientOriginalName();
+    $image->move(public_path('images'), $imageName);
+    $user->image = $imageName;
+
+    }    
+
         if ($res) {
-            return redirect()->back()->with('success', 'User registered successfully.');
+                return response()->json(['success' => true, 'message' => 'User registered successfully.']);
         } else {
-            return redirect()->back()->with('error', 'Something went wrong, try again later.');
+            return response()->json(['success' => false, 'errors' => ['server' => 'Something went wrong, try again later.']], 422);
         }
     }
 
 }
+
+
+
+
+
+
+    

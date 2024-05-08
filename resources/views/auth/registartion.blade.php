@@ -5,6 +5,7 @@
 <body>
     
     <div class="container" style="margin-bottom: 4rem;">
+    <div id="alertContainer" class="col-md-12"></div>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <div class="img">
@@ -14,19 +15,7 @@
             <div class="col-md-6 d-flex justify-content-center align-items-center">       
                 <div class="container py-4">
                     <form method="POST" enctype="multipart/form-data" id="registrationForm" action="{{ route('register_user') }}">
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                @if(session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-
-
+                  
                         @csrf
                         <div class="row justify-content-center">
                             <div class="col-md-3 mb-3 col-sm-3">
@@ -83,7 +72,7 @@
                             </div>
                         </div>
                     </form>
-                    <div id="alertContainer" class="col-md-12"></div>
+                  
                     
                     <div class="modal" id="actorsModal" tabindex="-1" aria-labelledby="actorsModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">

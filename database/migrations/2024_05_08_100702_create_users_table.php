@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+   
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -20,19 +18,15 @@ return new class extends Migration
             $table->string("password");
             $table->string("address");
             $table->date("Birth");
-
-            $table->string("image")->default('upload.jpg'); // Set default value for image
-
-            //$table->string("image");
+            $table->string("image"); 
+            
 
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('users');
