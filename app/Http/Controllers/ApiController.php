@@ -22,7 +22,7 @@ class ApiController extends Controller
         $url = BASE_URL . $endpoint;
 
         // Specify the path to the CA certificates bundle
-        $caPath = 'D:\Apex\PhpProjects\LaravelProjects\cacert.pem';
+        $caPath = __DIR__ . '/../../../cacert.pem';
 
         // Create a new Guzzle client with custom options
         $client = new Client([
