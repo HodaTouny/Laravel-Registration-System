@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("registrationForm");
     const fieldsID = ["name", "user_name", "email", "phone_number", "address", "password", "confirm_password", "Birth"];
@@ -20,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (xhr.status === 200) {
                     if (response.success) {
                         showAlert(response.message, "success");
-                        form.reset(); 
-                      
+                        form.reset();
+
                        document.getElementById("uploadedImage").src = "../assets/upload.png";
-                       
-                    } 
+
+                    }
                 } else {
                     if (response.errors) {
                         for (const field in response.errors) {
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     } else {
                         console.error("Unknown error occurred");
-                    }                    
+                    }
                 }
             }
         };
@@ -44,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.send(formData);
     });
 
-    
+    document.getElementById("dob-btn").addEventListener("click", function () {
+        getActorsByDOB();
+    })
 });
 
 
@@ -143,11 +146,11 @@ function handleImageUpload(event) {
     const file = event.target.files[0];
     const validFormats = ['image/jpeg', 'image/png', 'image/gif'];
     const maxSize = 5 * 1024 * 1024;
-    
+
     if (file) {
         if (!validFormats.includes(file.type)) {
             showAlert("Invalid image format. Please select a JPEG, PNG, or GIF file.", 'danger');
-            return; 
+            return;
         }
 
         if (file.size > maxSize) {
@@ -161,17 +164,17 @@ function handleImageUpload(event) {
             img.onload = function() {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
-                const diameter = 100; 
+                const diameter = 100;
                 canvas.width = diameter;
                 canvas.height = diameter;
-                
+
                 ctx.clearRect(0, 0, diameter, diameter);
-                
+
                 ctx.beginPath();
                 ctx.arc(diameter / 2, diameter / 2, diameter / 2, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.clip();
-                
+
                 const aspectRatio = img.width / img.height;
                 let newWidth, newHeight, x, y;
                 if (aspectRatio > 1) {
@@ -185,9 +188,9 @@ function handleImageUpload(event) {
                     x = (diameter - newWidth) / 2;
                     y = 0;
                 }
-                
+
                 ctx.drawImage(img, x, y, newWidth, newHeight);
-                
+
                 document.getElementById('uploadedImage').src = canvas.toDataURL('image/png');
             };
             img.src = e.target.result;
@@ -200,6 +203,7 @@ function handleImageUpload(event) {
 const actorsModal = new bootstrap.Modal(document.getElementById("actorsModal"));
 
 function getActorsByDOB() {
+
     actorsModal.hide();
 
     var dobButton = document.getElementById("dobButton");
@@ -213,7 +217,7 @@ function getActorsByDOB() {
 
     const dateOfBirth = document.getElementById("Birth").value.substring(5);
     document.getElementById("actorsList").innerHTML = "";
-    
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
 
@@ -231,7 +235,9 @@ function getActorsByDOB() {
             loading.style.display = "none";
         }
     }
-    xhr.open("GET", "API_Ops.php?today=" + dateOfBirth);
+    var routeUrl = document.getElementById("actorsModal").dataset.routeUrl;
+
+    xhr.open("GET", routeUrl + "?today=" + dateOfBirth);
     xhr.send();
 
 
