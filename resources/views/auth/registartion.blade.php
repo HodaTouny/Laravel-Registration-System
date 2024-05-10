@@ -91,7 +91,7 @@
                 <div class="loading"></div>
                 <script src="{{ URL('BootstrapCss/bootstrap.min.js') }}"></script>
                 <script src="{{ URL('js/form.js') }}"></script>
-                // trying to change the calendar into arabic:
+                 {{--trying to change the calendar into arabic:--}}
 {{--                <script src=--}}
 {{--                            "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"--}}
 {{--                        integrity=--}}

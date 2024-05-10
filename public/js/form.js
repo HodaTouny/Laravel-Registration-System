@@ -49,11 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("dob-btn").addEventListener("click", function () {
         getActorsByDOB();
     });
-// trying to change the calendar into arabic:
+
     // $('#Birth').datepicker({
     //     language: 'ar',
     //     autoclose: true
     // });
+    // trying to change the calendar into arabic
 
 });
 
