@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         for (const field in response.errors) {
                             if (response.errors.hasOwnProperty(field)) {
                                 showAlert(response.errors[field][0], "danger");
+                                return;
                             }
                         }
                     } else {
@@ -47,27 +48,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("dob-btn").addEventListener("click", function () {
         getActorsByDOB();
-    })
+    });
+// trying to change the calendar into arabic:
+    // $('#Birth').datepicker({
+    //     language: 'ar',
+    //     autoclose: true
+    // });
+
 });
 
 
 
 
-function displayError(inputField, message) {
+function displayError(inputField, messageKey, language) {
     const parent = inputField.parentElement;
     const errorElement = parent.querySelector(".error-message");
     if (errorElement) {
-        errorElement.textContent = message;
+        errorElement.textContent = errorMessages[language][messageKey];
     } else {
         const errorMessage = document.createElement("span");
         errorMessage.className = "error-message";
-        errorMessage.textContent = message;
+        errorMessage.textContent = errorMessages[language][messageKey];
         errorMessage.style.color = "red";
         errorMessage.style.display = "block";
         parent.appendChild(errorMessage);
     }
 }
-
 
 function showAlert(message, type) {
     var alertDiv = document.createElement("div");
@@ -91,39 +97,39 @@ function validation(inputField) {
         errorElement.remove();
     }
     if (value === "") {
-        displayError(inputField, "This field is required.");
+        displayError(inputField, "required_field", lang);
         return false;
     }
 
     switch (fieldid) {
         case "name":
-            if (value.split(" ").length < 2 || !/^[a-zA-Z\s]+$/.test(value)) {
-                displayError(inputField, "Write full name.");
+            if (value.split(" ").length < 2 || !/^[\u0600-\u06FF\s]+$|^[a-zA-Z\s]+$/.test(value)) {
+                displayError(inputField, "full_name", lang);
             }
             break;
         case "email":
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
-                displayError(inputField, "Invalid email address.");
+                displayError(inputField, "invalid_email", lang);
             }
             break;
         case "Birth":
             const today = new Date();
             const birthDateTime = new Date(value);
             if (birthDateTime >= today) {
-                displayError(inputField, "Invalid Date of Birth.");
+                displayError(inputField, "invalid_dob", lang);
             }
             break;
         case "password":
             const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
             if (!passwordRegex.test(value)) {
-                displayError(inputField, "Password must be at least 8 characters long and contain at least one number and one special character.");
+                displayError(inputField, 'pass_error', lang);
             }
             break;
         case "confirm_password":
             const password = document.getElementById("password").value.trim();
             if (value !== password) {
-                displayError(inputField, "Passwords do not match.");
+                displayError(inputField, "pass_match", lang);
             }
             break;
         default:
@@ -242,3 +248,33 @@ function getActorsByDOB() {
 
 
 }
+
+const errorMessages = {
+    'EN ': {
+        required_field: 'This field is required.',
+        pass_error: 'Password must be at least 8 characters long and contain at least one number and one special character.',
+        full_name: "Write the full name.",
+        invalid_email: "Invalid email address.",
+        invalid_dob: "Invalid Date of Birth.",
+        pass_match: "Passwords do not match.",
+    },
+    'الإنجليزية ':{
+        required_field: 'هذا الحقل مطلوب',
+        pass_error: 'يجب أن يحتوي الرقم السري على 8 خانات، تتضمن: أحرف، 1 رقم، 1 رمز مميز على الأقل',
+        full_name: "أكتب الاسم ثنائي",
+        invalid_email: "البريد الإلكتروني غير صحيح",
+        invalid_dob: "تاريخ الميلاد غير صحيح",
+        pass_match: "الرقم السري غير متطابق",
+    },
+    'العربية ': {
+        required_field: 'هذا الحقل مطلوب',
+        pass_error: 'يجب أن يحتوي الرقم السري على 8 خانات، تتضمن: أحرف، 1 رقم، 1 رمز مميز على الأقل',
+        full_name: "أكتب الاسم ثنائي",
+        invalid_email: "البريد الإلكتروني غير صحيح",
+        invalid_dob: "تاريخ الميلاد غير صحيح",
+        pass_match: "الرقم السري غير متطابق",
+    }
+};
+
+var lang = document.getElementById('dropdownMenuButton').innerText;
+
