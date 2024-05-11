@@ -18,4 +18,8 @@ return [
     'password' => 'الرقم السري',
     'confirm_password' => 'تأكيد الرقم السري',
     'actors_with_same_dob' => 'ممثلون بنفس تاريخ الميلاد',
+    'user_registered_successfully' => 'تم تسجيل الدخول بنجاح',
+    'something_went_wrong' => 'حدث خطأ، حاول مرة أخرى',
+    'loading' => '...جاري التحميل',
+//    'user_name.unique' => 'تم استخدام اسم المستخدم من قبل',
 ];
