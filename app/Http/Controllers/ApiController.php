@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
+ini_set('max_execution_time', 60);
 class ApiController extends Controller
 {
     /**
@@ -12,8 +13,8 @@ class ApiController extends Controller
      */
     public function bornToday(Request $request): \Illuminate\Http\JsonResponse
     {
-        define("API_HOST", "imdb8.p.rapidapi.com");
-        define("API_KEY", "a8818b1e0amsh4812456ddbb8ad9p183bd1jsnf0f931d70abb");
+        define("API_HOST", "online-movie-database.p.rapidapi.com");
+        define("API_KEY", "22f318d4fbmsh56fbcb9dbbaa9b3p19e766jsn93ad172c99b5");
         define("BASE_URL", "https://" . API_HOST);
 
         $date = $request->input('today');
