@@ -15,7 +15,7 @@ class AuthenticationController extends Controller
     {
         return view('auth.registartion');
     }
-    
+
 
     public function registr(Validations $request)
     {
@@ -29,16 +29,18 @@ class AuthenticationController extends Controller
         $user->phone_number = $request->phone_number;
         $user->address = $request->address;
         $user->Birth = $request->Birth;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $user->image = $imageName;
+
+        }
         $res = $user->save();
 
-        
-if ($request->hasFile('image')) {
-    $image = $request->file('image');
-    $imageName = $image->getClientOriginalName();
-    $image->move(public_path('images'), $imageName);
-    $user->image = $imageName;
 
-    }    
+
 
         if ($res) {
                 return response()->json(['success' => true, 'message' => 'User registered successfully.']);
@@ -54,4 +56,4 @@ if ($request->hasFile('image')) {
 
 
 
-    
+
