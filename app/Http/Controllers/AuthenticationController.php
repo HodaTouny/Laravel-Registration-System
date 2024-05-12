@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserRegistered;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Validations;
 
@@ -43,7 +45,9 @@ class AuthenticationController extends Controller
 
 
         if ($res) {
-                return response()->json(['success' => true, 'message' => 'User registered successfully.']);
+
+            Mail::to('guidetest05@gmail.com')->send(new UserRegistered($user));
+            return response()->json(['success' => true, 'message' => 'User registered successfully.']);
         } else {
             return response()->json(['success' => false, 'errors' => ['server' => 'Something went wrong, try again later.']], 422);
         }
