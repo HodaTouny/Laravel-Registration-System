@@ -22,7 +22,11 @@
                         <button type="button" class="btn btn-light text-dark login disabled">{{__('messages.sign_in')}}</button>
                         <div class="dropdown">
                             <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px;">
-                                {{__('messages.en')}}
+                                @if(app()->getLocale() == 'en')
+                                    {{ __('messages.en') }}
+                                @elseif(app()->getLocale() == 'ar')
+                                    {{ __('messages.ar') }}
+                                @endif
                             </button>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuButton">
                                 <a class="dropdown-item" href={{url('locale/en')}} >{{__('messages.en')}}</a>
@@ -52,7 +56,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ URL('js/Languages.js') }}"></script>
+
 
 </body>
 </html>
