@@ -30,7 +30,7 @@ class UserRegistrationTest extends TestCase
 
         $response = $this->json('POST', '/register_user', $formData);
 
-        // Check for validation errors if the response status is 422
+//         Check for validation errors if the response status is 422
         if ($response->status() != 200) {
             dd($response->json());  // Dump the response and die, to see what errors are returned
         }
