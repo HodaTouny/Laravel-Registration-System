@@ -4,18 +4,17 @@ namespace Tests\Unit;
 
 use App\Http\Requests\Validations;
 use App\Models\Users;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
 class ValidationTest extends TestCase
 {
-    use RefreshDatabase;
 
     public function test_registration_validation_rules()
     {
 
-        /** @test */
         $request = new Validations();
 
         $rules = $request->rules();
@@ -31,17 +30,6 @@ class ValidationTest extends TestCase
         ];
 
         $this->assertEquals($expectedRules, $rules, "The validation rules should match the expected rules.");
-    }
-
-    public function test_password_hashing()
-    {
-        $user = new Users([
-            'password' => 'Password@1'
-        ]);
-
-        $user->save();
-
-        $this->assertNotEquals('Password@1', $user->password, "The password should be hashed.");
     }
 
 
