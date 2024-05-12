@@ -25,7 +25,7 @@ class EmailSentTest extends TestCase
             'Birth' => '1990-01-01',
             'password' => 'Password@1',
             'password_confirmation' => 'Password@1',
-            'image' => UploadedFile::fake()->image('profile.jpg')
+            'image' => UploadedFile::fake()->image('profile_email_test.jpg')
         ];
 
         $response = $this->json('POST', '/register_user', $formData);
