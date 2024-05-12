@@ -42,14 +42,13 @@ class AuthenticationController extends Controller
         $res = $user->save();
 
 
-
-
         if ($res) {
-
             Mail::to('guidetest05@gmail.com')->send(new UserRegistered($user));
-            return response()->json(['success' => true, 'message' => 'User registered successfully.']);
+            $message = __('messages.user_registered_successfully');
+            return response()->json(['success' => true, 'message' => $message]);
         } else {
-            return response()->json(['success' => false, 'errors' => ['server' => 'Something went wrong, try again later.']], 422);
+            $message = __('messages.something_went_wrong');
+            return response()->json(['success' => false, 'errors' => ['server' => $message]], 422);
         }
     }
 
