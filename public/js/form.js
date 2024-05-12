@@ -122,7 +122,7 @@ function validation(inputField) {
             }
             break;
         case "password":
-            const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])[a-zA-Z0-9!@#$%^&*]{8,}$/;
             if (!passwordRegex.test(value)) {
                 displayError(inputField, 'pass_error', lang);
             }
@@ -139,16 +139,16 @@ function validation(inputField) {
 }
 
 
-function showAlert(message, type) {
-    var alertDiv = document.createElement("div");
-    alertDiv.className = "alert alert-" + type;
-    alertDiv.setAttribute("role", "alert");
-    alertDiv.innerHTML = message;
-    document.getElementById("alertContainer").appendChild(alertDiv);
-    setTimeout(function () {
-        alertDiv.remove();
-    }, 4000);
-}
+// function showAlert(message, type) {
+//     var alertDiv = document.createElement("div");
+//     alertDiv.className = "alert alert-" + type;
+//     alertDiv.setAttribute("role", "alert");
+//     alertDiv.innerHTML = message;
+//     document.getElementById("alertContainer").appendChild(alertDiv);
+//     setTimeout(function () {
+//         alertDiv.remove();
+//     }, 4000);
+// }
 function handleImageUpload(event) {
     const file = event.target.files[0];
     const validFormats = ['image/jpeg', 'image/png', 'image/gif'];
