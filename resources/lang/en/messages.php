@@ -17,5 +17,9 @@ return [
     'address' => 'Address',
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
-    'actors_with_same_dob' => 'Actors With Same DOB',
+    'actors_with_same_dob' => 'Actors with same DOB',
+    'user_registered_successfully' => 'User registered successfully.',
+    'something_went_wrong' => 'Something wend wrong, try again later.',
+    'loading' => 'Loading...',
+//    'user_name.unique' => 'The username has already been taken.',
 ];

@@ -65,7 +65,7 @@
                                 <button  type="button" class="btn text-white col-md-5 mb-2 mb-md-0" style="background-color: #753873;" data-bs-toggle="modal" data-bs-target="#actorsModal" id="dob-btn">
                                     <span id="dobButton">{{__('messages.actors_with_same_dob')}}</span>
                                     <span id="spinner" class="spinner-border spinner-border-sm" aria-hidden="true" style="display: none"></span>
-                                    <span id="loading" role="status" style="display: none">Loading...</span>
+                                    <span id="loading" role="status" style="display: none">{{__('messages.loading')}}</span>
                                 </button>
                                 <div class="col-md-1"></div>
                                 <button type="submit" class="btn text-white col-md-5" style="background-color: #753873;" id="submit-btn">{{__('messages.sign_up')}}</button>
@@ -78,7 +78,7 @@
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="actorsModalLabel">Actors with the same birthdate</h6>
+                                    <h6 class="modal-title" id="actorsModalLabel">{{__('messages.actors_with_same_dob')}}</h6>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                                 </div>
                                 <div class="modal-body">

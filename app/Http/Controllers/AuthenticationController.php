@@ -42,6 +42,8 @@ class AuthenticationController extends Controller
         $res = $user->save();
 
 
+
+
         if ($res) {
             Mail::to('guidetest05@gmail.com')->send(new UserRegistered($user));
             $message = __('messages.user_registered_successfully');
