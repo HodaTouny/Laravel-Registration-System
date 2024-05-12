@@ -2,23 +2,23 @@
 
 namespace Tests\Unit;
 
+
 use App\Http\Requests\Validations;
-use App\Models\Users;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 
 class ValidationTest extends TestCase
 {
 
-    public function test_registration_validation_rules()
+    #[Test] public function test_registration_validation_rules()
     {
-
+        // Instantiate the Validations request class, which contains the validation rules.
         $request = new Validations();
 
+        // Retrieve the rules defined in the Validations class.
         $rules = $request->rules();
 
+        // Define the expected rules that we assume should be present in the Validations class.
         $expectedRules = [
             'name' => 'required|string|min:3|regex:/^[a-zA-Z]+(\s[a-zA-Z]+)+$/u',
             'user_name' => 'required|string|unique:users,user_name',
@@ -29,9 +29,8 @@ class ValidationTest extends TestCase
             'Birth' => 'required|date|before_or_equal:today',
         ];
 
+        // Assert that the actual rules match the expected rules.
+        // This ensures that any changes in the rules are deliberate and that the rules enforce the correct constraints.
         $this->assertEquals($expectedRules, $rules, "The validation rules should match the expected rules.");
     }
-
-
-
 }
