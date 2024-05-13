@@ -9,7 +9,7 @@ return [
     'faqs' => 'FAQs',
     'about' => 'About',
     'en' => 'EN',
-    'ar' => 'AR',
+    'ar' => 'العربية',
     'full_name' => 'Full Name',
     'user_name' => 'User Name',
     'email' => 'Email',

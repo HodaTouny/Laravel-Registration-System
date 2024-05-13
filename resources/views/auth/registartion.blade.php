@@ -31,34 +31,34 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="{{__('messages.full_name')}}"/>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="{{__('messages.full_name')}}" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="{{__('messages.user_name')}}"/>
+                                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="{{__('messages.user_name')}}" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="{{__('messages.email')}} "/>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="{{__('messages.email')}} " style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="{{__('messages.phone_number')}}"/>
+                                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="{{__('messages.phone_number')}}" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="{{__('messages.address')}}"/>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="{{__('messages.address')}}" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="{{__('messages.password')}}" />
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{__('messages.password')}}" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="password" class="form-control" id="confirm_password" name="password_confirmation" placeholder="{{__('messages.confirm_password')}}" />
+                                <input type="password" class="form-control" id="confirm_password" name="password_confirmation" placeholder="{{__('messages.confirm_password')}}" style="text-align: @if(App::getLocale() == 'ar') right  @endif"/>
                             </div>
 
                             <div class="form-group mb-3" id="datepicker">
-                                <input type="date" class="form-control" id="Birth" name="Birth" lang="ar" dir="rtl" />
+                                <input type="date" class="form-control" id="Birth" name="Birth" style="text-align: @if(App::getLocale() == 'ar') right @endif"/>
                             </div>
 
                             <div class="form-group mb-3 row align-items-center justify-content-center">
@@ -91,22 +91,7 @@
                 <div class="loading"></div>
                 <script src="{{ URL('BootstrapCss/bootstrap.min.js') }}"></script>
                 <script src="{{ URL('js/form.js') }}"></script>
-                 {{--trying to change the calendar into arabic:--}}
-{{--                <script src=--}}
-{{--                            "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"--}}
-{{--                        integrity=--}}
-{{--                            "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"--}}
-{{--                        crossorigin="anonymous">--}}
-{{--                </script>--}}
-{{--                <script src=--}}
-{{--                            "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"--}}
-{{--                        integrity=--}}
-{{--                            "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"--}}
-{{--                        crossorigin="anonymous">--}}
-{{--                </script>--}}
-{{--                <script src=--}}
-{{--                            "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">--}}
-{{--                </script>--}}
+
             </div>
         </div>
     </div>

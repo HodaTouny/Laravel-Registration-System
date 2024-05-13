@@ -50,12 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
         getActorsByDOB();
     });
 
-    // $('#Birth').datepicker({
-    //     language: 'ar',
-    //     autoclose: true
-    // });
-    // trying to change the calendar into arabic
-
 });
 
 
@@ -72,6 +66,10 @@ function displayError(inputField, messageKey, language) {
         errorMessage.textContent = errorMessages[language][messageKey];
         errorMessage.style.color = "red";
         errorMessage.style.display = "block";
+        if(lang === "العربية ")
+        {
+            errorMessage.style.textAlign = "right";
+        }
         parent.appendChild(errorMessage);
     }
 }
@@ -268,14 +266,13 @@ const errorMessages = {
         pass_match: "الرقم السري غير متطابق",
     },
     'العربية ': {
-        required_field: 'هذا الحقل مطلوب',
-        pass_error: 'يجب أن يحتوي الرقم السري على 8 خانات، تتضمن: أحرف، 1 رقم، 1 رمز مميز على الأقل',
-        full_name: "أكتب الاسم ثنائي",
-        invalid_email: "البريد الإلكتروني غير صحيح",
-        invalid_dob: "تاريخ الميلاد غير صحيح",
-        pass_match: "الرقم السري غير متطابق",
+        required_field: '.هذا الحقل مطلوب',
+        pass_error: '.يجب أن يحتوي الرقم السري على 8 خانات، تتضمن: أحرف، 1 رقم، 1 رمز مميز على الأقل',
+        full_name: ".أكتب الاسم ثنائي",
+        invalid_email: ".البريد الإلكتروني غير صحيح",
+        invalid_dob: ".تاريخ الميلاد غير صحيح",
+        pass_match: ".الرقم السري غير متطابق",
     }
 };
 
 var lang = document.getElementById('dropdownMenuButton').innerText;
-

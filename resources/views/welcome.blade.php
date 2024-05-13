@@ -45,14 +45,22 @@
     </main>
 
     <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">        <p class="col-md-4 mb-0 text-muted">FCAI 2024, Web based</p>
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.home')</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.features')</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.pricing')</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.faqs')}}</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.about')}}</a></li>
+        <ul class="nav col-md-4 justify-content-end" >
+            @if(App::getLocale() == 'en')
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.home')</a> </li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.features')</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.pricing')</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.faqs')}}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.about')}}</a></li>
+            @elseif(App::getLocale() == 'ar')
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.about')}}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{{__('messages.faqs')}}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.pricing')</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.features')</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@lang('messages.home')</a> </li>
+            @endif
         </ul>
-      </footer>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
