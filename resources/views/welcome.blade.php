@@ -18,7 +18,9 @@
                 <img src="../assets/logo.png" width="180"></a>
                 <div>
                     <div class="d-flex flex-wrap align-items-center">
-                        <button type="button" class="btn btn-light text-dark me-2 signup">{{__('messages.sign_up')}}</button>
+                        <a href="{{url('/register')}}">
+                            <button type="button" class="btn btn-light text-dark me-2 signup" >{{__('messages.sign_up')}}</button>
+                        </a>
                         <button type="button" class="btn btn-light text-dark login disabled">{{__('messages.sign_in')}}</button>
                         <div class="dropdown">
                             <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px;">

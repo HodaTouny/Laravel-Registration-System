@@ -137,16 +137,6 @@ function validation(inputField) {
 }
 
 
-// function showAlert(message, type) {
-//     var alertDiv = document.createElement("div");
-//     alertDiv.className = "alert alert-" + type;
-//     alertDiv.setAttribute("role", "alert");
-//     alertDiv.innerHTML = message;
-//     document.getElementById("alertContainer").appendChild(alertDiv);
-//     setTimeout(function () {
-//         alertDiv.remove();
-//     }, 4000);
-// }
 function handleImageUpload(event) {
     const file = event.target.files[0];
     const validFormats = ['image/jpeg', 'image/png', 'image/gif'];

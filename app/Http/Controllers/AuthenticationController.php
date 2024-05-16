@@ -45,13 +45,14 @@ class AuthenticationController extends Controller
 
 
         if ($res) {
-            Mail::to(env('MAIL_USERNAME'))->send(new UserRegistered($user));
             $message = __('messages.user_registered_successfully');
+            Mail::to(env('MAIL_USERNAME'))->send(new UserRegistered($user));
             return response()->json(['success' => true, 'message' => $message]);
         } else {
             $message = __('messages.something_went_wrong');
             return response()->json(['success' => false, 'errors' => ['server' => $message]], 422);
         }
+
     }
 
 }
